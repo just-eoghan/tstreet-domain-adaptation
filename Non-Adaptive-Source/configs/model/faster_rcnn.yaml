@@ -1,0 +1,7 @@
+_target_: src.models.flash_detect_model.FlashDetectLitModel
+
+num_classes: 2
+backbone: "resnet50_fpn"
+head: "faster_rcnn"
+learning_rate: 0.0025
+optimizer: "SGD"

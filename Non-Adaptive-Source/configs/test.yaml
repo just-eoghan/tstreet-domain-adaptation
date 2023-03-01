@@ -1,0 +1,50 @@
+# @package _global_
+
+
+defaults:
+  - override/ trainer: default.yaml
+  - override/ model: efficientdet.yaml
+  - override/ datamodule: detection_datamodule.yaml 
+  - override/ callbacks: default.yaml
+  - override/ logger: wandb # set logger here or use command line (e.g. `python run.py logger=wandb`)
+  - override/ log_dir: evaluation.yaml
+  - override/ experiment: null
+
+original_work_dir: ${hydra:runtime.cwd}
+
+data_dir: ${original_work_dir}/data
+
+print_config: True
+
+ignore_warnings: True
+
+seed: 100101101112115101101107046097105
+
+callbacks:
+  log_bounding_boxes:
+    _target_: src.callbacks.wandb_callbacks.LogBoundingBoxes
+
+logger:
+  wandb:
+    log_model: False
+    project: "your project"
+
+trainer:
+  accelerator: "gpu"
+  devices: [0]
+
+datamodule:
+  test_folder: "" # data_dir is specified in config.yaml
+  test_ann_file: ""
+  val_folder: null
+  val_ann_file: null
+  train_folder: null
+  train_ann_file: null
+  batch_size: 2
+  transform_kwargs:
+    image_size: [256,256]
+
+
+ckpt_path: ???
+
+name: "test_to_run"

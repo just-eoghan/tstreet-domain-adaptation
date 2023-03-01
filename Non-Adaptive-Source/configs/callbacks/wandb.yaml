@@ -1,0 +1,10 @@
+defaults:
+  - default.yaml
+
+upload_ckpts_as_artifact:
+  _target_: src.callbacks.wandb_callbacks.UploadCheckpointsAsArtifact
+  ckpt_dir: "checkpoints/"
+  upload_best_only: False
+
+log_bounding_boxes:
+  _target_: src.callbacks.wandb_callbacks.LogBoundingBoxes

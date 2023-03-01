@@ -1,0 +1,15 @@
+_target_: src.datamodules.da_frcnn_datamodule.DaFrcnnDatamodule
+
+source_data_dir: ""
+source_annotations_file: ""
+target_data_dir: ""
+target_annotations_file: ""
+val_data_dir: ""
+val_annotations_file: ""
+train_batch_size: 2
+val_batch_size: 2
+num_workers: 0
+pin_memory: False
+num_classes: 2
+image_width: 160
+image_height: 120
